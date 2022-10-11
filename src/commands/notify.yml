@@ -1,0 +1,28 @@
+description: >
+  This command echos "Hello World" using file inclusion.
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+parameters:
+  text:
+    default: ""
+    type: string
+  app_username:
+    default: "circle-ci"
+    type: string
+  mentions:
+    default: ""
+    type: string
+  channel:
+    default: ""
+    type: string
+steps:
+  - run:
+      name: Slack - send notification
+      command: |
+        $body = ConvertTo-Json @{
+          pretext = "<< parameters.text >>"
+          text = "<< parameters.mentions >>"
+          username = "<< parameters.app_username >>"
+          channel = "<< parameters.channel >>"
+        }
+        Invoke-RestMethod -uri "$env:URI_SLACK" -Method Post -body $body -ContentType 'application/json'
