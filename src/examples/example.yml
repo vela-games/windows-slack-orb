@@ -1,13 +1,23 @@
 description: >
-  Sample example description.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained.
+  Send a custom notification using Slack's
+
 usage:
-  version: 2.1
+  version: 2.1 #
+
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    win: circleci/windows@4.1.1
+    win-slack: vela-games/win-slack@0.0.1
+
+  jobs:
+    notification:
+      executor: win/default
+
+      steps:
+        - win-slack/notify:
+            text: "Hello World"
+            mentions: "$env:USER_MENTION"
+
   workflows:
-    use-my-orb:
+    notify-workflow:
       jobs:
-        - <orb-name>/<job-name>
+        - notification
