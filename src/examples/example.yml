@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@4.1.1
+  win-slack: vela-games/win-slack@0.0.7
+
+jobs:
+  notification:
+    executor: win/default
+
+    steps:
+      - win-slack/notify:
+          text: "Hello World"
+          mentions: "$env:USER_MENTION"
+
+workflows:
+  notify-workflow:
+    jobs:
+      - notification
