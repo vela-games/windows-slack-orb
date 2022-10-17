@@ -2,7 +2,7 @@ description: >
   Send a custom notification using Slack's
 
 usage:
-  version: 2.1 #
+  version: 2.1
 
   orbs:
     win: circleci/windows@4.1.1
@@ -15,7 +15,7 @@ usage:
       steps:
         - win-slack/notify:
             text: "Hello World"
-            mentions: "$env:USER_MENTION"
+            mentions: "$USER_MENTION"
 
   workflows:
     notify-workflow:
