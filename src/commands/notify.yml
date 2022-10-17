@@ -1,25 +1,29 @@
-description: >
+description: |
   Notify a Slack channel with a custom message from Windows environment.
+  The environment variable SLACK_ACCESS_TOKEN must be set for this orb to work.
 
 parameters:
   text:
+    description: >
+      Enter a text message.
     default: ""
     type: string
   mentions:
+    description: |
+      Mention users via the @ symbol and angled brackets: "<@USER>"
+      If the username contains a space, using the Slack ID: "<@U8XXXXXXX>"
     default: ""
     type: string
   channel:
-    default: "$SLACK_DEFAULT_CHANNEL"
-    type: string
-  token:
-    default: "$SLACK_ACCESS_TOKEN"
+    description: >
+      Select which channel in which to post to. Only channel name. Only one channel.
+    default: ""
     type: string
 steps:
   - run:
       environment:
-        SLACK_PARAM_TEXT: << parameters.text >>
-        SLACK_PARAM_MENTIONS: << parameters.mentions >>
-        SLACK_PARAM_CHANNEL: << parameters.channel >>
-        SLACK_PARAM_TOKEN: << parameters.token >>
+        SLACK_PARAM_TEXT: "<< parameters.text >>"
+        SLACK_PARAM_MENTIONS: "<< parameters.mentions >>"
+        SLACK_PARAM_CHANNEL: "<< parameters.channel >>"
       name: Slack - send notification
       command: <<include(scripts/send.ps1)>>

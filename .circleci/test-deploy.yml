@@ -9,21 +9,17 @@ filters: &filters
     only: /.*/
 
 jobs:
-  # Create a job to test the commands of your orbs.
-  # You may want to add additional validation steps to ensure the commands are working as expected.
   command-tests-windows:
     executor: win/default
     steps:
       - win-slack/notify:
+          mentions: "<!here> <!channel>"
           text: "Hello World"
-          mentions: "$USER_MENTION"
-          token: $TEST_SLACK_TOKEN
-          channel: $TEST_SLACK_CHANNEL
+          channel: "test"
 
 workflows:
   test-deploy:
     jobs:
-      # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
       - command-tests-windows:
           filters: *filters
       - orb-tools/pack:

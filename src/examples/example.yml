@@ -1,12 +1,12 @@
 description: >
-  Send a custom notification using Slack's
+  Send a custom notification using Slack
 
 usage:
   version: 2.1
 
   orbs:
     win: circleci/windows@4.1.1
-    win-slack: vela-games/win-slack@0.0.1
+    win-slack: vela-games/win-slack@0.0.2
 
   jobs:
     notification:
@@ -14,8 +14,9 @@ usage:
 
       steps:
         - win-slack/notify:
+            mentions: "<!here> <!channel>"
             text: "Hello World"
-            mentions: "$USER_MENTION"
+            channel: "test"
 
   workflows:
     notify-workflow:
