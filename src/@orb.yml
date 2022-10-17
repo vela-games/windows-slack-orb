@@ -1,4 +1,8 @@
 version: 2.1
 
 description: >
-  Implement slack notifications from Windows environment.
+  Implement event-based notifications across all of your CI/CD pipelines. Support only windows.
+
+display:
+  home_url: "https://github.com/vela-games"
+  source_url: "https://github.com/vela-games/windows-slack-orb"
