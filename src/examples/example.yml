@@ -6,7 +6,7 @@ usage:
 
   orbs:
     win: circleci/windows@4.1.1
-    win-slack: vela-games/win-slack@0.0.4
+    win-slack: vela-games/win-slack@0.0.5
 
   jobs:
     notification:
