@@ -19,6 +19,11 @@ parameters:
       Select which channel in which to post to. Only channel name. Only one channel.
     default: ""
     type: string
+  notify_type:
+    description: >
+      "dev", "prod", "hold"
+    default: ""
+    type: string
   project_type:
     description: >
       The lower-case name of the VCS provider, E.g. “github”, “bitbucket”.
@@ -41,6 +46,7 @@ steps:
         SLACK_PARAM_TEXT: "<< parameters.text >>"
         SLACK_PARAM_MENTIONS: "<< parameters.mentions >>"
         SLACK_PARAM_CHANNEL: "<< parameters.channel >>"
+        SLACK_PARAM_NOTIFY_TYPE: "<< parameters.notify_type >>"
         CICLECI_PARAM_PROJECT_TYPE: "<< parameters.project_type >>"
         CICLECI_PARAM_PROJECT_NAME: "<< parameters.project_name >>"
         CICLECI_PARAM_ORG_NAME: "<< parameters.org_name >>"
