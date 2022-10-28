@@ -20,11 +20,10 @@ if ($notify_type -eq "dev"){
     $text = "$env:CICLECI_PARAM_PROJECT_NAME Build - New Dev build uploaded`n $artifacts_url"
 }
 elseif($notify_type -eq "prod"){
-    $artifacts_url = GetArtifactsUrl
-    $text = "$env:CICLECI_PARAM_PROJECT_NAME Build - New Prod build uploaded`n $artifacts_url"
+    $text = "$env:CICLECI_PARAM_PROJECT_NAME Build - New Prod build uploaded`n"
 }
 elseif($notify_type -eq "hold"){
-    $text = "$env:CICLECI_PARAM_PROJECT_NAME Build - ON HOLD - Awaiting Approval `n"
+    $text = "$env:CICLECI_PARAM_PROJECT_NAME Build - ON HOLD - Awaiting Approval`n"
 }
 else{
     $text = "$env:SLACK_PARAM_TEXT"
